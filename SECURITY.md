@@ -24,4 +24,4 @@ The Windows vendor DLL was reverse-engineered as data. It is not included, execu
 
 ## Reporting a security issue
 
-Until the project has a dedicated private reporting channel, do not put exploit details or raw biometric/device captures in a public issue. Contact the repository maintainers through a private channel available on the hosting service.
+When the repository is public, report vulnerabilities through GitHub's private vulnerability reporting (the maintainers should enable it before publication). While it remains private, contact the repository owner through the contact options on the `@iewil` GitHub profile. Do not put exploit details, biometric records, or raw device captures in a public issue.

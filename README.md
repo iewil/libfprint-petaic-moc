@@ -1,6 +1,8 @@
-# WeAct PetaIC fingerprint reader for Linux
+# PetaIC MOC libfprint driver
 
-This project adds an experimental native [libfprint](https://gitlab.freedesktop.org/libfprint/libfprint) backend for the [WeAct/PetaIC USB fingerprint reader](https://www.aliexpress.com/item/1005012693895809.html?spm=a2g0o.order_list.order_list_main.4.4ca31802lES4b8) with USB ID `28e9:5159`. It has been verified on Linux Mint with fprintd, Cinnamon PAM, and a real Cinnamon screen unlock.
+[![Build and native tests](https://github.com/iewil/libfprint-petaic-moc/actions/workflows/ci.yml/badge.svg)](https://github.com/iewil/libfprint-petaic-moc/actions/workflows/ci.yml)
+
+This project adds an experimental native [libfprint](https://gitlab.freedesktop.org/libfprint/libfprint) backend for the [WeAct/PetaIC USB fingerprint reader](https://www.aliexpress.com/item/1005012693895809.html?spm=a2g0o.order_list.order_list_main.4.4ca31802lES4b8) with USB ID `28e9:5159`. Testing used **Package 2** in that listing; other package variants have not been verified. The backend has been verified on Linux Mint with fprintd, Cinnamon PAM, and a real Cinnamon screen unlock.
 
 The reader performs matching on-device. The current backend stores an authorization record that associates a cryptographically authenticated reader identity with a Linux account and finger name. It does not copy biometric templates to the computer.
 
@@ -15,12 +17,12 @@ The reader performs matching on-device. The current backend stores an authorizat
 - Enrollment retries an image-quality rejection without advancing the accepted sample count. Live negative-match, cancellation, and reconnect checks remain part of validation.
 - The detailed protocol research and capture records are kept in a separate local research archive, outside this repository.
 
-This remains experimental software. The reader's model certificate expired on 2025-05-15. The installation therefore requires a local policy pin for the reader's model certificate, device public key, and firmware hash. The exception allows only that pinned expired model certificate; issuer validity, signatures, firmware attestation, and fresh session MACs remain checked. Certificate revocation policy, suspend/resume, unplug recovery, long-term reliability, and biometric false-accept rates have not been established. Read [the security and trust model](docs/SECURITY.md) before installing it.
+This remains experimental software. The reader's model certificate expired on 2025-05-15. The installation therefore requires a local policy pin for the reader's model certificate, device public key, and firmware hash. The exception allows only that pinned expired model certificate; issuer validity, signatures, firmware attestation, and fresh session MACs remain checked. Certificate revocation policy, suspend/resume, unplug recovery, long-term reliability, and biometric false-accept rates have not been established. Read [the security and trust model](SECURITY.md) before installing it.
 
 ## Contents
 
 - [Build, pin, install, and remove](docs/BUILDING.md)
-- [Security model and limitations](docs/SECURITY.md)
+- [Security model and limitations](SECURITY.md)
 - [Development and contribution guide](CONTRIBUTING.md)
 - [Open-source release notes](docs/OPEN_SOURCE_RELEASE.md)
 - [Third-party notices](THIRD_PARTY_NOTICES.md)

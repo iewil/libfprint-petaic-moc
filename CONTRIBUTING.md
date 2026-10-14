@@ -1,6 +1,6 @@
 # Contributing
 
-Contributions are welcome for protocol correctness, parser safety, distribution compatibility, reproducible builds, and documentation. Read [the security model](docs/SECURITY.md) and [build guide](docs/BUILDING.md) before changing trust or installation behavior.
+Contributions are welcome for protocol correctness, parser safety, distribution compatibility, reproducible builds, and documentation. Read [the security model](SECURITY.md) and [build guide](docs/BUILDING.md) before changing trust or installation behavior.
 
 ## Before submitting a change
 

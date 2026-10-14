@@ -1,0 +1,47 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '23 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    # GitHub provides CodeQL code scanning for free on public repositories.
+    # Keep this workflow dormant while the repository is private; it activates
+    # automatically if the repository is made public.
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: c-cpp
+            build-mode: manual
+          - language: python
+            build-mode: none
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native build dependencies
+        if: matrix.language == 'c-cpp'
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes build-essential git ninja-build pkg-config python3-pip python3-venv python3-dev meson libglib2.0-dev libssl-dev libusb-1.0-0-dev libgusb-dev libjson-glib-dev libcairo2-dev
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+      - name: Build backend
+        if: matrix.language == 'c-cpp'
+        run: python3 scripts/build_native.py --clean
+      - uses: github/codeql-action/analyze@v3

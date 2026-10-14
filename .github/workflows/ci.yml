@@ -1,0 +1,25 @@
+name: Build and native tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes build-essential git ninja-build pkg-config python3-pip python3-venv python3-dev meson libglib2.0-dev libssl-dev libusb-1.0-0-dev libgusb-dev libjson-glib-dev libcairo2-dev
+      - name: Check Python syntax
+        run: python3 -m py_compile scripts/*.py
+      - name: Build backend and run native tests
+        run: python3 scripts/build_native.py --clean
