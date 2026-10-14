@@ -4,6 +4,10 @@
 
 This project adds an experimental native [libfprint](https://gitlab.freedesktop.org/libfprint/libfprint) backend for the [WeAct/PetaIC USB fingerprint reader](https://www.aliexpress.com/item/1005012693895809.html?spm=a2g0o.order_list.order_list_main.4.4ca31802lES4b8) with USB ID `28e9:5159`. Testing used **Package 2** in that listing; other package variants have not been verified. The backend has been verified on Linux Mint with fprintd, Cinnamon PAM, and a real Cinnamon screen unlock.
 
+![WeAct Hello USB fingerprint reader, Package 2, connected to its USB adapter](assets/weact-hello-package-2.jpg)
+
+*The Package 2 reader used for development and testing.*
+
 The reader performs matching on-device. The current backend stores an authorization record that associates a cryptographically authenticated reader identity with a Linux account and finger name. It does not copy biometric templates to the computer.
 
 ## AI authorship
