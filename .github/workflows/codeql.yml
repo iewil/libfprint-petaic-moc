@@ -37,11 +37,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes build-essential git ninja-build pkg-config python3-pip python3-venv python3-dev meson libglib2.0-dev libssl-dev libusb-1.0-0-dev libgusb-dev libjson-glib-dev libcairo2-dev
-      - uses: github/codeql-action/init@v3
+      - uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
       - name: Build backend
         if: matrix.language == 'c-cpp'
         run: python3 scripts/build_native.py --clean
-      - uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/analyze@v4
