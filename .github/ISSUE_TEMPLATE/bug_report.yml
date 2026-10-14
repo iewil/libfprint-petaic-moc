@@ -1,0 +1,62 @@
+name: Bug report
+description: Report a reproducible problem with the driver
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, check existing issues. Never attach fingerprints, fprintd print files, raw USB captures, private keys, device serial numbers, or trust-pin files. Remove usernames and other personal details from logs.
+  - type: input
+    id: version
+    attributes:
+      label: Project version
+      description: Git commit or release tag
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Linux distribution and version
+      placeholder: Linux Mint 22.1
+    validations:
+      required: true
+  - type: input
+    id: package
+    attributes:
+      label: Product listing package variant
+      description: State the package number if known. Package 2 is the only variant currently tested by maintainers.
+    validations:
+      required: true
+  - type: input
+    id: usb
+    attributes:
+      label: USB vendor and product ID
+      placeholder: 28e9:5159
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant sanitized logs
+      description: Remove usernames, serial numbers, keys, and any personal data. Do not include raw protocol captures or biometric records.
+      render: text
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I have checked that this report contains no biometric data, raw USB captures, private keys, trust pins, serial numbers, or personal information.
+          required: true

@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software in research or another project, please cite it."
+title: "PetaIC MOC libfprint driver"
+type: software
+authors:
+  - name: "Liwei"
+repository-code: "https://github.com/iewil/libfprint-petaic-moc"
+license: "LGPL-2.1-or-later"
