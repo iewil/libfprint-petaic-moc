@@ -1,0 +1,12 @@
+# Local environments and generated build output
+.env
+.env.*
+.venv/
+.venv-linux/
+venv/
+__pycache__/
+*.pyc
+/build/
+/builddir/
+.DS_Store
+Thumbs.db
